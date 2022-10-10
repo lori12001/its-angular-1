@@ -1,0 +1,68 @@
+<main class="form-signin w-100 m-auto mt-3">
+    <form class="needs-validation" [class.was-validated]="showErrors" #loginForm="">
+        <h1 class="h3 mb-3 fw-normal text-center">Registrazione Utente</h1>
+        <div class="p-3">
+            <label for="userdetails" class="text-center m-2 ">Vuoi registrarti come una persona fisica o una persona giuridica ?</label>
+
+            <input type ="radio" class="m-1" name="userdetails" value="1" ng-model="" />Persona Fisica
+            <input type ="radio" class="m-1" name="userdetails" value="2" ng-model="" />Persona Giuridica<br />
+        </div>
+        
+        <div class="form-floating mt-2 ">
+            <input type="text" class="form-control" id="NomeRagioneSocInput" name="NomeRagioneSocInput" placeholder="Nome o Ragione Sociale" required>
+            <label for="NomeRagioneSocInput">Nome o Ragione Sociale</label>
+
+        <div class="form-floating mt-2"> 
+            <input type="text" class="form-control" id="CognomeInput" name="CognomeInput" placeholder="Cognome" required>
+            <label for="CognomeInput">Cognome</label>
+        </div>
+
+        <div class="form-floating mt-2">
+            <input type="email" class="form-control" id="emailInput" name="emailInput" placeholder="Email" required>
+            <label for="emailInput">Email</label>
+
+        </div>
+        <div class="form-floating mt-2">
+            <input type="tel" class="form-control" id="telInput" name="telInput" placeholder="Telefono" required>
+            <label for="telInput">Telefono</label>
+        </div>
+        <div class="form-floating mt-2">
+            <input type="" class="form-control" id="emailInput" name="emailInput" placeholder="Fax">
+            <label for="emailInput">Fax</label>
+        </div>
+        <div class="form-floating mt-2">
+            <input type="date" class="form-control" id="dateInput" name="dateInput" placeholder="Anno di nascita">
+            <label for="dateInput">Anno di nascita</label>
+        </div>
+        <div class="form-floating mt-2">
+            <input type="text" class="form-control" id="viaInput" name="viaInput" placeholder="Via">
+            <label for="dateInput"> es. Via Roma, 49</label>
+        </div>
+
+        </div>
+        <div class="form-floating mt-2">
+            <div class="input-group mb-3">
+                <div class="form-floating">
+                    <input [type]="showPassword?'text':'password'" 
+                        class="form-control mb-0" id="passwordInput" email autofocus name="passwordInput"
+                        placeholder="your password..." required>
+                    <label for="passwordInput">Password</label>
+                </div>
+                <span class="input-group-text" role="button" (click)="showPassword = !showPassword">
+                    👁
+                </span>
+            </div>
+        </div>
+
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="rememberMe" > Remember me
+            </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" routerLink="/home" type="button" (click)="signIn()">
+            Sign in
+        </button>
+        <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
+    </form>
+</main>
