@@ -9,10 +9,27 @@ import { Router } from '@angular/router';
 })
 export class ProfiloUtenteComponent {
   jsonIn = {
-    username: '',
-    password: '',
-    rememberMe: false,
+    tipoPersona: '',
+    codFisc: '',
+    iva: '',
+    nome: '',
+    cognome: '',
+    ragSoc: '',
+    email: '',
+    telefono: '',
+    fax: '',
+    annoDiNascita: '',
+    tipoVia: '',
+    numCiv: '',
+    cap: '',
+    comune: '',
+    provincia: '',
+    stato: '',
+    maschio: '',
+    femmina: '',
+    
   };
+
   @ViewChild('loginForm') loginForm!: NgForm;
   showErrors = false;
   showPassword = false;

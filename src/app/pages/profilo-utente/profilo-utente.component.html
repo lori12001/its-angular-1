@@ -1,68 +1,292 @@
 <main class="form-signin w-100 m-auto mt-3">
-    <form class="needs-validation" [class.was-validated]="showErrors" #loginForm="">
-        <h1 class="h3 mb-3 fw-normal text-center">Registrazione Utente</h1>
-        <div class="p-3">
-            <label for="userdetails" class="text-center m-2 ">Vuoi registrarti come una persona fisica o una persona giuridica ?</label>
+  <form
+    class="needs-validation"
+    [class.was-validated]="showErrors"
+    #loginForm=""
+  >
+    <h1 class="h3 mb-3 fw-normal text-center">Registrazione Utente</h1>
+    <div class="p-3">
+      <label for="userdetails" class="text-center m-2"
+        >Vuoi registrarti come una persona fisica o una persona giuridica
+        ?</label
+      >
+      <div class="form-check">
+        <input
+          type="radio"
+          class="form-check-input"
+          name="userdetails"
+          id="pfInput"
+          value="pf"
+          [(ngModel)]="jsonIn.tipoPersona"
+          checked
+        />
+        <label class="form-check-label" for="pfInput"> Persona Fisica </label>
+      </div>
 
-            <input type ="radio" class="m-1" name="userdetails" value="1" ng-model="" />Persona Fisica
-            <input type ="radio" class="m-1" name="userdetails" value="2" ng-model="" />Persona Giuridica<br />
-        </div>
-        
-        <div class="form-floating mt-2 ">
-            <input type="text" class="form-control" id="NomeRagioneSocInput" name="NomeRagioneSocInput" placeholder="Nome o Ragione Sociale" required>
-            <label for="NomeRagioneSocInput">Nome o Ragione Sociale</label>
+      <div class="form-check">
+        <input
+        type="radio"
+        class="form-check-input"
+        name="userdetails"
+        id="pgInput"
+        value="pg"
+        [(ngModel)]="jsonIn.tipoPersona"
+      />
+        <label class="form-check-label" for="pgInput"> Persona Giuridica </label>
+      </div>
 
-        <div class="form-floating mt-2"> 
-            <input type="text" class="form-control" id="CognomeInput" name="CognomeInput" placeholder="Cognome" required>
-            <label for="CognomeInput">Cognome</label>
-        </div>
+    </div>
 
-        <div class="form-floating mt-2">
-            <input type="email" class="form-control" id="emailInput" name="emailInput" placeholder="Email" required>
-            <label for="emailInput">Email</label>
+    <div class="form-floating mt-2" *ngIf="jsonIn.tipoPersona === 'pf'">
+      <input
+        type="text"
+        class="form-control"
+        id="codfiscInput"
+        name="codFisc"
+        placeholder="Cognome"
+        [(ngModel)]="jsonIn.codFisc"
+        required
+      />
+      <label for="codFiscInput"> Codice Fiscale </label>
+    </div>
 
-        </div>
-        <div class="form-floating mt-2">
-            <input type="tel" class="form-control" id="telInput" name="telInput" placeholder="Telefono" required>
-            <label for="telInput">Telefono</label>
-        </div>
-        <div class="form-floating mt-2">
-            <input type="" class="form-control" id="emailInput" name="emailInput" placeholder="Fax">
-            <label for="emailInput">Fax</label>
-        </div>
-        <div class="form-floating mt-2">
-            <input type="date" class="form-control" id="dateInput" name="dateInput" placeholder="Anno di nascita">
-            <label for="dateInput">Anno di nascita</label>
-        </div>
-        <div class="form-floating mt-2">
-            <input type="text" class="form-control" id="viaInput" name="viaInput" placeholder="Via">
-            <label for="dateInput"> es. Via Roma, 49</label>
-        </div>
+    <div class="form-floating mt-2" *ngIf="jsonIn.tipoPersona === 'pg'">
+      <input
+        type="text"
+        class="form-control"
+        id="ivaInput"
+        name="iva"
+        placeholder="Partita IVA"
+        [(ngModel)]="jsonIn.iva"
+        required
+      />
+      <label for="ivaInput"> Partita IVA </label>
+    </div>
 
-        </div>
-        <div class="form-floating mt-2">
-            <div class="input-group mb-3">
-                <div class="form-floating">
-                    <input [type]="showPassword?'text':'password'" 
-                        class="form-control mb-0" id="passwordInput" email autofocus name="passwordInput"
-                        placeholder="your password..." required>
-                    <label for="passwordInput">Password</label>
-                </div>
-                <span class="input-group-text" role="button" (click)="showPassword = !showPassword">
-                    👁
-                </span>
-            </div>
-        </div>
+    <div class="form-floating mt-2" *ngIf="jsonIn.tipoPersona === 'pf'">
+      <input
+        type="text"
+        class="form-control"
+        id="NomeRagioneSocInput"
+        name="nome"
+        placeholder="Nome o Ragione Sociale"
+        [(ngModel)]="jsonIn.nome"
+        required
+      />
+      <label for="NomeRagioneSocInput">Nome</label>
+    </div>
 
+    <div class="form-floating mt-2" *ngIf="jsonIn.tipoPersona === 'pg'">
+      <input
+        type="text"
+        class="form-control"
+        id="NomeRagioneSocInput"
+        name="ragSoc"
+        placeholder="Nome o Ragione Sociale"
+        [(ngModel)]="jsonIn.ragSoc"
+        required
+      />
+      <label for="NomeRagioneSocInput">Ragione Sociale</label>
+    </div>
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="rememberMe" > Remember me
-            </label>
+    <div class="form-floating mt-2" *ngIf="jsonIn.tipoPersona === 'pf'">
+      <input
+        type="text"
+        class="form-control"
+        id="CognomeInput"
+        name="CognomeInput"
+        placeholder="Cognome"
+        [(ngModel)]="jsonIn.cognome"
+        required
+      />
+      <label for="CognomeInput">Cognome</label>
+    </div>
+
+    <div class="form-floating mt-2">
+      <input
+        type="email"
+        class="form-control"
+        id="emailInput"
+        name="emailInput"
+        placeholder="Email"
+        [(ngModel)]="jsonIn.email"
+        required
+      />
+      <label for="emailInput">Email</label>
+    </div>
+    <div class="form-floating mt-2">
+      <input
+        type="tel"
+        class="form-control"
+        id="telInput"
+        name="telInput"
+        placeholder="Telefono"
+        [(ngModel)]="jsonIn.telefono"
+        required
+      />
+      <label for="telInput">Telefono</label>
+    </div>
+
+    <div class="form-floating mt-2">
+      <input
+        type=""
+        class="form-control"
+        id="emailInput"
+        name="emailInput"
+        placeholder="Fax"
+        [(ngModel)]="jsonIn.fax"
+      />
+      <label for="emailInput">Fax</label>
+    </div>
+    <div class="form-floating mt-2">
+      <input
+        type="date"
+        class="form-control"
+        id="dateInput"
+        name="dateInput"
+        placeholder="Anno di nascita"
+        [(ngModel)]="jsonIn.annoDiNascita"
+      />
+      <label for="dateInput">Anno di nascita</label>
+    </div>
+
+    <div class="form-floating mt-2" [(ngModel)]="jsonIn.tipoVia">
+      <select
+        class="form-select"
+        id="viaInput"
+        name="tipoVia"
+        aria-label="Default select example"
+        placeholder="Es. Via Roma"
+      >
+        <option selected>Tipo di via</option>
+        <option value="1">Via</option>
+        <option value="2">Corso</option>
+        <option value="3">Viale</option>
+      </select>
+
+      <div class="form-floating mt-2">
+        <input
+          type="number"
+          class="form-control"
+          id="numeroCivInput"
+          min="1"
+          name="numCiv"
+          placeholder=""
+          [(ngModel)]="jsonIn.numCiv"
+        />
+        <label for="numeroCivInput"> Numero Civico</label>
+      </div>
+    </div>
+    <div class="form-floating mt-2">
+      <input
+        type="number"
+        class="form-control"
+        id="capInput"
+        min="1"
+        name="cap"
+        placeholder=""
+        [(ngModel)]="jsonIn.cap"
+      />
+      <label for="capInput"> Cap</label>
+    </div>
+    <div class="form-floating mt-2">
+      <input
+        type="text"
+        class="form-control"
+        id="comuneInput"
+        min="1"
+        name="comune"
+        placeholder="Comune/Località"
+        [(ngModel)]="jsonIn.comune"
+      />
+      <label for="comuneInput"> Comune/Località </label>
+
+      <div class="form-floating mt-2">
+        <input
+          type="text"
+          class="form-control"
+          id="provinciaInput"
+          min="1"
+          name="provinciaInput"
+          placeholder="Provincia di"
+          [(ngModel)]="jsonIn.provincia"
+        />
+        <label for="provinciaInput"> Provincia di </label>
+      </div>
+    </div>
+    <div class="form-floating mt-2">
+      <input
+        type="text"
+        class="form-control"
+        id="statoInput"
+        min="1"
+        name="stato"
+        placeholder="Stato"
+        [(ngModel)]="jsonIn.stato"
+      />
+      <label for="statoInput"> Stato </label>
+    </div>
+    <div class="form-floating mt-2">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="flexRadioDefault"
+          id="flexRadioDefault1"
+        />
+        <label class="form-check-label" for="flexRadioDefault1">
+          Maschio
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="flexRadioDefault"
+          id="flexRadioDefault2"
+        />
+        <label class="form-check-label" for="flexRadioDefault2">
+          Femmina
+        </label>
+      </div>
+    </div>
+
+    <div class="form-floating mt-2">
+      <div class="input-group mb-3">
+        <div class="form-floating">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            class="form-control mb-0"
+            id="passwordInput"
+            email
+            autofocus
+            name="passwordInput"
+            placeholder="your password..."
+            required
+          />
+          <label for="passwordInput">Password</label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" routerLink="/home" type="button" (click)="signIn()">
-            Sign in
-        </button>
-        <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
-    </form>
+        <span
+          class="input-group-text"
+          role="button"
+          (click)="showPassword = !showPassword"
+        >
+          👁
+        </span>
+      </div>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label> <input type="checkbox" name="rememberMe" /> Remember me </label>
+    </div>
+    <button
+      class="w-100 btn btn-lg btn-primary"
+      routerLink="/home"
+      type="button"
+      (click)="signIn()"
+    >
+      Sign in
+    </button>
+    <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
+  </form>
 </main>
