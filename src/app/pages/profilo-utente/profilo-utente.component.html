@@ -2,7 +2,7 @@
   <form
     class="needs-validation"
     [class.was-validated]="showErrors"
-    #loginForm=""
+    #loginForm="ngForm"
   >
     <h1 class="h3 mb-3 fw-normal text-center">Registrazione Utente</h1>
     <div class="p-3">
@@ -45,6 +45,7 @@
         name="codFisc"
         placeholder="Cognome"
         [(ngModel)]="jsonIn.codFisc"
+        required
         required
       />
       <label for="codFiscInput"> Codice Fiscale </label>
@@ -146,6 +147,7 @@
         name="dateInput"
         placeholder="Anno di nascita"
         [(ngModel)]="jsonIn.annoDiNascita"
+        required
       />
       <label for="dateInput">Anno di nascita</label>
     </div>
@@ -157,6 +159,7 @@
         name="tipoVia"
         aria-label="Default select example"
         placeholder="Es. Via Roma"
+        required
       >
         <option selected>Tipo di via</option>
         <option value="1">Via</option>
@@ -173,6 +176,7 @@
           name="numCiv"
           placeholder=""
           [(ngModel)]="jsonIn.numCiv"
+          required
         />
         <label for="numeroCivInput"> Numero Civico</label>
       </div>
@@ -186,6 +190,7 @@
         name="cap"
         placeholder=""
         [(ngModel)]="jsonIn.cap"
+        required
       />
       <label for="capInput"> Cap</label>
     </div>
@@ -198,6 +203,7 @@
         name="comune"
         placeholder="Comune/Località"
         [(ngModel)]="jsonIn.comune"
+        required
       />
       <label for="comuneInput"> Comune/Località </label>
 
@@ -210,6 +216,7 @@
           name="provinciaInput"
           placeholder="Provincia di"
           [(ngModel)]="jsonIn.provincia"
+          required
         />
         <label for="provinciaInput"> Provincia di </label>
       </div>
@@ -223,6 +230,7 @@
         name="stato"
         placeholder="Stato"
         [(ngModel)]="jsonIn.stato"
+        required
       />
       <label for="statoInput"> Stato </label>
     </div>
@@ -259,7 +267,6 @@
             class="form-control mb-0"
             id="passwordInput"
             email
-            autofocus
             name="passwordInput"
             placeholder="your password..."
             required
@@ -281,7 +288,6 @@
     </div>
     <button
       class="w-100 btn btn-lg btn-primary"
-      routerLink="/home"
       type="button"
       (click)="signIn()"
     >

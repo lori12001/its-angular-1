@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ProfiloUtenteComponent {
   jsonIn = {
-    tipoPersona: '',
+    tipoPersona: 'pf',
     codFisc: '',
     iva: '',
     nome: '',
